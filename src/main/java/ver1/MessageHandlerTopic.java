@@ -1,3 +1,5 @@
+package ver1;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -7,7 +9,7 @@ public class MessageHandlerTopic implements MessageHandler{
     /**
      * The instance with logger.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(JSONParser.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(MessageHandlerTopic.class.getName());
 
     private final static ConcurrentHashMap<
             String, ConcurrentLinkedQueue<Message>>
@@ -33,23 +35,20 @@ public class MessageHandlerTopic implements MessageHandler{
         Message result = null;
         String queueName = message.getTitle();
         if (!queuesAddOnly.containsKey(queueName)) {
-            LOG.warn(String.format("Message:(%s) not receive yet."), message.getTitle());
+            LOG.warn("ver1.Message not receive yet: " + message.getTitle());
             result = message;
         } else {
             if (!queuesSubscribers.containsKey(queueName)) {
                 queuesSubscribers.put(queueName, new ConcurrentHashMap<>());
                 queuesSubscribers.get(queueName)
                         .put(message.getID(), new ConcurrentLinkedQueue<>(queuesAddOnly.get(queueName)));
-                result = queuesSubscribers.get(queueName).get(message.getID()).poll();
             } else {
                 if (!queuesSubscribers.get(queueName).containsKey(message.getID())) {
                     queuesSubscribers.get(queueName)
                             .put(message.getID(), new ConcurrentLinkedQueue<>(queuesAddOnly.get(queueName)));
-                    result = queuesSubscribers.get(queueName).get(message.getID()).poll();
-                } else {
-                    result = queuesSubscribers.get(queueName).get(message.getID()).poll();
                 }
             }
+            result = queuesSubscribers.get(queueName).get(message.getID()).poll();
         }
         return result;
     }

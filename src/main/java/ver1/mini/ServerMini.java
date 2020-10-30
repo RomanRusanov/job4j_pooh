@@ -1,4 +1,4 @@
-package mini;
+package ver1.mini;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +61,7 @@ public class ServerMini {
         ServerMini server = new ServerMini();
         server.waitConnectionAndGet();
         ClientMini client = new ClientMini();
-        client.sendToServer("Message to server from client");
+        client.sendToServer("ver1.Message to server from client");
         System.out.println("end");
     }
 }

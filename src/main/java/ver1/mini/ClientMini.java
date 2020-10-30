@@ -1,4 +1,4 @@
-package mini;
+package ver1.mini;
 
 import java.io.*;
 import java.net.*;

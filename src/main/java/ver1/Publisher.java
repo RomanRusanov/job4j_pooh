@@ -1,3 +1,5 @@
+package ver1;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,11 +22,13 @@ public class Publisher {
     public void requestToServer(InetAddress address, int port, String json) {
         try (Socket socket = new Socket(address, port);
              PrintWriter out = new PrintWriter(
-                     new BufferedOutputStream(socket.getOutputStream()))
+                     new BufferedOutputStream(socket.getOutputStream()), true)
         ) {
             out.print(json);
+            LOG.info("ver1.Publisher send: " +  json);
+            LOG.info("ver1.Publisher send to port: " +  socket.getPort());
         } catch (IOException e) {
-            LOG.error(String.format("Error! Not connected to server:%s port:%d",
+            LOG.error(String.format("Error! Not connected to ServerMini:%s port:%d",
                     address, port), e);
         }
     }

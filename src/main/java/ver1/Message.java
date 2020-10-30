@@ -1,3 +1,5 @@
+package ver1;
+
 /**
  * @author Roman Rusanov
  * @version 0.1

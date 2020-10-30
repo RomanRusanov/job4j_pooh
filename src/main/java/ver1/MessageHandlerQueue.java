@@ -1,3 +1,5 @@
+package ver1;
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -14,6 +16,7 @@ public class MessageHandlerQueue implements MessageHandler{
             allQueues.put(queueName, new ConcurrentLinkedQueue<>());
         }
         allQueues.get(queueName).add(message);
+        System.out.println("ver1.MessageHandlerQueue size:" + this.getSize());
     }
 
     @Override

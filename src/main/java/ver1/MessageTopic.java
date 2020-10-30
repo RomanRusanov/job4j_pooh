@@ -1,3 +1,5 @@
+package ver1;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -6,25 +8,29 @@ import org.slf4j.LoggerFactory;
  * @version 0.1
  * @since 16.10.2020
  * email roman9628@gmail.com
- * The class describe type queue of message..
+ * The class .
  */
-public class MessageQueue implements Message{
+public class MessageTopic implements Message{
     /**
      * The instance with logger.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(MessageQueue.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(MessageTopic.class.getName());
     /**
      * The field contain sequence type.
      */
-    private final String typeSequence = "queue";
+    private final String typeSequence = "topic";
     /**
-     * The field contain title of queue.
+     * The field contain title of topic.
      */
-    public String queue;
+    private String topic;
     /**
      * The field contain text.
      */
-    public String text;
+    private String text;
+    /**
+     * The ID subscriber.
+     */
+    private String ID;
     /**
      * The field contain message type.
      * (Post, Get)
@@ -47,18 +53,19 @@ public class MessageQueue implements Message{
     @Override
     public String getJSON() {
         return String.format("{\n"
-                + "  \"queue\" : \"%s\",\n"
+                + "  \"topic\" : \"%s\",\n"
                 + "  \"text\" : \"%s\",\n"
+                + "  \"ID\" : \"%s\",\n"
                 + "  \"messageType\" : \"%s\"\n"
-                + "}", this.queue, this.text, this.messageType);
+                + "}", this.topic, this.text, this.ID, this.messageType);
     }
 
-    public String getQueue() {
-        return queue;
+    public String getTopic() {
+        return topic;
     }
 
-    public void setQueue(String queue) {
-        this.queue = queue;
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     public String getText() {
@@ -76,7 +83,6 @@ public class MessageQueue implements Message{
     public void setMessageType(String messageType) {
         this.messageType = messageType;
     }
-
     /**
      * The method return title type.
      *
@@ -84,7 +90,7 @@ public class MessageQueue implements Message{
      */
     @Override
     public String getTitle() {
-        return queue;
+        return topic;
     }
 
     /**
@@ -94,6 +100,10 @@ public class MessageQueue implements Message{
      */
     @Override
     public String getID() {
-        return "queue not need ID";
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

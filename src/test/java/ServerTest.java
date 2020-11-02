@@ -6,8 +6,13 @@ class ServerTest {
 
     @Test
     void serverTest() {
-        Server server = new Server(9000);
-        server.getConnection();
-        server.shutdown();
+        new Thread(() ->{
+            Server server = new Server(9000);
+            server.getConnection();
+        }).start();
+
+
+        Client client = new Client();
+        client.sendToServer("hello   ");
     }
 }

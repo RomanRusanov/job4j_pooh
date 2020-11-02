@@ -5,6 +5,7 @@ import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
 import java.util.*;
+import java.util.stream.*;
 
 /**
  * @author Roman Rusanov
@@ -50,29 +51,18 @@ public class Server {
         }
     }
 
+
     private void processConnection(Socket incoming) {
-        InputStream inputStream = null;
-        try {
-            inputStream = incoming.getInputStream();
-            OutputStream outputStream = incoming.getOutputStream();
-            try (Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8)){
-                PrintWriter printWriter = new PrintWriter(
-                        new OutputStreamWriter(outputStream, StandardCharsets.UTF_8), true);
-                printWriter.println("Hi! Enter BYE to exit.");
-                /**
-                 * передать обратно данные полученные от клиента
-                 */
-                boolean done = false;
-                while (!done && scanner.hasNextLine()) {
-                    String line = scanner.next();
-                    printWriter.println("Echo: " + line);
-                    if (line.trim().equals("BYE")) {
-                        done = true;
-                    }
-                }
-            }
+        try (OutputStream out = incoming.getOutputStream();
+             BufferedReader in = new BufferedReader(
+                     new InputStreamReader(incoming.getInputStream()))) {
+            String str = in.readLine();
+            LOG.info("SERVER receive: " + str);
+            str += "MODIFIED!";
+            out.write(str.getBytes());
+            LOG.info("SERVER send: " + str);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("Error with socket work: " + e);
         }
     }
 

@@ -1,5 +1,3 @@
-package ver1;
-
 /**
  * @author Roman Rusanov
  * @version 0.1
@@ -42,5 +40,5 @@ public interface Message {
      * The ID for subscriber identification/
      * @return String.
      */
-    String getID();
+    String getId();
 }

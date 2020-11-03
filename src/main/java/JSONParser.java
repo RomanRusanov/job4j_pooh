@@ -1,15 +1,9 @@
-package ver1;
+import com.google.gson.*;
+import com.google.gson.stream.*;
+import org.slf4j.*;
 
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 
 /**
  * @author Roman Rusanov
@@ -40,23 +34,23 @@ public class JSONParser {
      * methods for both. Noe the peek() method. It is used to find out the type
      * of the next token without actually consuming it.
      *
-     * @throws IOException
+     * @throws java.io.IOException
      */
     public Message handleJSON(String json) throws IOException {
         Message result = null;
         JsonReader reader = new JsonReader(new StringReader(json));
         reader.beginObject();
-        JsonToken token = reader.peek();
-        if (token.equals(JsonToken.NAME)) {
-            String type = reader.nextName();
-            if (!messages.containsKey(type)) {
-                LOG.error(String.format("This json message type:%s not exist.", type));
-            } else {
-                Message msg = messages.get(type);
-                Gson gson = new Gson();
-                result = gson.fromJson(json, msg.getClass());
+            JsonToken token = reader.peek();
+            if (token.equals(JsonToken.NAME)) {
+                String type = reader.nextName();
+                if (!messages.containsKey(type)) {
+                    LOG.error(String.format("This json message type:%s not exist.", type));
+                } else {
+                    Message msg = messages.get(type);
+                    Gson gson = new Gson();
+                    result = gson.fromJson(json, msg.getClass());
+                }
             }
-        }
         return result;
     }
 }

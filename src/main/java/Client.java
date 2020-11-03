@@ -1,16 +1,16 @@
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
 
 /**
  * @author Roman Rusanov
  * @version 0.1
  * @since 02.11.2020
  * email roman9628@gmail.com
- * The class .
+ * The class implements Publisher or Subscriber.
  */
 public class Client {
     /**
@@ -18,9 +18,15 @@ public class Client {
      */
     private static final Logger LOG = LoggerFactory.getLogger(Client.class.getName());
 
+    /**
+     * The method send string to server and take response from server.
+     * Publisher or Subscriber bellow from JSON context.
+     * @param sendToServer String in json format.
+     * @return String in json format.
+     */
     public String sendToServer(String sendToServer) {
         StringBuilder result = new StringBuilder();
-        try(Socket socket = new Socket("localhost", 9000)) {
+        try (Socket socket = new Socket("localhost", 9000)) {
             Scanner scanner = new Scanner(socket.getInputStream(), "UTF-8");
             PrintWriter writer = new PrintWriter(socket.getOutputStream());
             writer.print(sendToServer);

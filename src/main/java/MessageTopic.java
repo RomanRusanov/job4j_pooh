@@ -1,8 +1,3 @@
-package ver1;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * @author Roman Rusanov
  * @version 0.1
@@ -10,11 +5,7 @@ import org.slf4j.LoggerFactory;
  * email roman9628@gmail.com
  * The class .
  */
-public class MessageTopic implements Message{
-    /**
-     * The instance with logger.
-     */
-    private static final Logger LOG = LoggerFactory.getLogger(MessageTopic.class.getName());
+public class MessageTopic implements Message {
     /**
      * The field contain sequence type.
      */
@@ -30,7 +21,7 @@ public class MessageTopic implements Message{
     /**
      * The ID subscriber.
      */
-    private String ID;
+    private String id;
     /**
      * The field contain message type.
      * (Post, Get)
@@ -54,35 +45,42 @@ public class MessageTopic implements Message{
     public String getJSON() {
         return String.format("{\n"
                 + "  \"topic\" : \"%s\",\n"
-                + "  \"text\" : \"%s\",\n"
-                + "  \"ID\" : \"%s\",\n"
-                + "  \"messageType\" : \"%s\"\n"
-                + "}", this.topic, this.text, this.ID, this.messageType);
+                + "  \"text\" : \"%s\"\n"
+                + "}", this.topic, this.text);
     }
 
-    public String getTopic() {
-        return topic;
-    }
-
+    /**
+     * The setter for field.
+     * @param topic String.
+     */
     public void setTopic(String topic) {
         this.topic = topic;
     }
 
+    /**
+     * The getter for field.
+     * @return
+     */
     public String getText() {
         return text;
     }
 
+    /**
+     * The setter for field.
+     * @param text String.
+     */
     public void setText(String text) {
         this.text = text;
     }
 
+    /**
+     * The getter for field.
+     * @return String.
+     */
     public String getMessageType() {
         return messageType;
     }
 
-    public void setMessageType(String messageType) {
-        this.messageType = messageType;
-    }
     /**
      * The method return title type.
      *
@@ -99,11 +97,34 @@ public class MessageTopic implements Message{
      * @return String.
      */
     @Override
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    /**
+     * The setter for field.
+     * @param id String.
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    /**
+     * Method override to string
+     * @return String representation.
+     */
+    @Override
+    public String toString() {
+        return "MessageTopic{"
+                + "typeSequence='" + typeSequence + '\''
+                + ", topic='" + topic + '\''
+                + ", text='" + text + '\''
+                + ", id='" + id + '\''
+                + ", messageType='" + messageType + '\''
+                + '}';
     }
 }

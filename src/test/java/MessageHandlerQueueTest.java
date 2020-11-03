@@ -1,20 +1,33 @@
-import org.junit.jupiter.api.*;
-import ver1.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import java.io.IOException;
 
-import java.io.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * The class test behavior MessageHandlerQueue.java class.
+ */
 class MessageHandlerQueueTest {
-
+    /**
+     * The String json.
+     */
     private String json;
-
+    /**
+     * The instance parser.
+     */
     private JSONParser jsonParser;
-
+    /**
+     * The tested instance.
+     */
     private MessageHandlerQueue queue;
-
+    /**
+     * Message instance. Create parser.
+     */
     private  Message message;
 
+    /**
+     * The method run before each test.
+     */
     @BeforeEach
     void setUp() {
         this.json = "{\n"
@@ -32,13 +45,23 @@ class MessageHandlerQueueTest {
         }
     }
 
+    /**
+     * If post success when collection contain 1 record.
+     */
     @Test
     void post() {
         assertEquals(1, queue.getSize());
     }
 
+    /**
+     * If message exist get it in json representation.
+     */
     @Test
     void get() {
-        assertEquals(this.json, queue.get(message).getJSON());
+        assertEquals("{\n"
+                + "  \"queue\" : \"weather\",\n"
+                + "  \"text\" : \"temperature +18 C\"\n"
+                + "}",
+                queue.get(message).getJSON());
     }
 }

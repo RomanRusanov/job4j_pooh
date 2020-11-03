@@ -1,5 +1,3 @@
-package ver1;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +8,7 @@ import org.slf4j.LoggerFactory;
  * email roman9628@gmail.com
  * The class describe type queue of message..
  */
-public class MessageQueue implements Message{
+public class MessageQueue implements Message {
     /**
      * The instance with logger.
      */
@@ -50,34 +48,32 @@ public class MessageQueue implements Message{
     public String getJSON() {
         return String.format("{\n"
                 + "  \"queue\" : \"%s\",\n"
-                + "  \"text\" : \"%s\",\n"
-                + "  \"ID\" : \"%s\",\n"
-                + "  \"messageType\" : \"%s\"\n"
-                + "}", this.queue, this.text, this.getID(), this.messageType);
+                + "  \"text\" : \"%s\"\n"
+                + "}", this.queue, this.text);
     }
 
-    public String getQueue() {
-        return queue;
-    }
-
-    public void setQueue(String queue) {
-        this.queue = queue;
-    }
-
+    /**
+     * The getter for field.
+     * @return Text content.
+     */
     public String getText() {
         return text;
     }
 
+    /**
+     * The setter for field.
+     * @param text String.
+     */
     public void setText(String text) {
         this.text = text;
     }
 
+    /**
+     * The getter for field.
+     * @return String.
+     */
     public String getMessageType() {
         return messageType;
-    }
-
-    public void setMessageType(String messageType) {
-        this.messageType = messageType;
     }
 
     /**
@@ -96,7 +92,7 @@ public class MessageQueue implements Message{
      * @return String.
      */
     @Override
-    public String getID() {
+    public String getId() {
         return "queue not need ID";
     }
 }

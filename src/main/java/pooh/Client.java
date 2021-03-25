@@ -29,7 +29,7 @@ public class Client {
      */
     public String sendToServer(String sendToServer) {
         StringBuilder result = new StringBuilder();
-        try (Socket socket = new Socket("localhost", 9000)) {
+        try (Socket socket = new Socket("127.0.0.1", 50500)) {
             Scanner scanner = new Scanner(socket.getInputStream(), StandardCharsets.UTF_8);
             PrintWriter writer = new PrintWriter(socket.getOutputStream());
             writer.print(sendToServer);

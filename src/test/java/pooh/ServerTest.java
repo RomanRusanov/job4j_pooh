@@ -27,7 +27,7 @@ public class ServerTest {
                 + "  \"messageType\" : \"get\""
                 + "}";
         Thread serverThread = new Thread(() -> {
-            Server server = new Server(9000);
+            Server server = new Server(50500);
             server.acceptConnections();
         });
         serverThread.start();

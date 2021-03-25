@@ -54,7 +54,7 @@ public class ServerTest2 {
 
 
         new Thread(() -> {
-            Server server = new Server(9000);
+            Server server = new Server(50500);
             server.acceptConnections();
         }).start();
 

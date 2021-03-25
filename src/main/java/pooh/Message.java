@@ -1,3 +1,5 @@
+package pooh;
+
 /**
  * @author Roman Rusanov
  * @version 0.1

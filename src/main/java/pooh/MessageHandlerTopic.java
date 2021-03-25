@@ -1,3 +1,5 @@
+package pooh;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,19 +44,19 @@ public class MessageHandlerTopic implements MessageHandler {
      * The method check topic present in outer collection if true
      * check (if id present in inner collection get it, otherwise
      * add new queue in inner collection) and poll it. Otherwise generate message
-     * with text error - "Error! Message not receive yet."
+     * with text error - "Error! pooh.Message not receive yet."
      * @param message Received message.
-     * @return Message response.
+     * @return pooh.Message response.
      */
     @Override
     public Message get(Message message) {
         Message result;
         String queueName = message.getTitle();
         if (!ADD_ONLY.containsKey(queueName)) {
-            LOG.warn("Message not receive yet: " + message.getTitle());
+            LOG.warn("pooh.Message not receive yet: " + message.getTitle());
             MessageTopic msg = new MessageTopic();
             msg.setTopic(message.getTitle());
-            msg.setText("Error! Message not receive yet.");
+            msg.setText("Error! pooh.Message not receive yet.");
             result = msg;
         } else {
             if (!SUB.containsKey(queueName)) {

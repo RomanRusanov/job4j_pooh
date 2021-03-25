@@ -1,3 +1,5 @@
+package pooh;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,7 +68,7 @@ public class Server {
     /**
      * Init ServerSocket instance.
      * @param port number port.
-     * @return Server socket.
+     * @return pooh.Server socket.
      */
     private ServerSocket initSocket(int port) {
         ServerSocket result = null;
@@ -97,7 +99,7 @@ public class Server {
     /**
      * The mwthod process connection. Receive string from client, parse json,
      * create instance message and response client.
-     * @param incoming Client socket instance.
+     * @param incoming pooh.Client socket instance.
      */
     private void processConnection(Socket incoming) {
         try (OutputStream out = incoming.getOutputStream();
@@ -143,6 +145,6 @@ public class Server {
                 e.printStackTrace();
             }
         }
-        LOG.info("Server down!");
+        LOG.info("pooh.Server down!");
     }
 }

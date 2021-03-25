@@ -1,30 +1,29 @@
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package pooh;
 
 /**
  * @author Roman Rusanov
  * @version 0.1
  * @since 16.10.2020
  * email roman9628@gmail.com
- * The class describe type queue of message..
+ * The class .
  */
-public class MessageQueue implements Message {
-    /**
-     * The instance with logger.
-     */
-    private static final Logger LOG = LoggerFactory.getLogger(MessageQueue.class.getName());
+public class MessageTopic implements Message {
     /**
      * The field contain sequence type.
      */
-    private final String typeSequence = "queue";
+    private final String typeSequence = "topic";
     /**
-     * The field contain title of queue.
+     * The field contain title of topic.
      */
-    public String queue;
+    private String topic;
     /**
      * The field contain text.
      */
-    public String text;
+    private String text;
+    /**
+     * The ID subscriber.
+     */
+    private String id;
     /**
      * The field contain message type.
      * (Post, Get)
@@ -47,14 +46,22 @@ public class MessageQueue implements Message {
     @Override
     public String getJSON() {
         return String.format("{\n"
-                + "  \"queue\" : \"%s\",\n"
+                + "  \"topic\" : \"%s\",\n"
                 + "  \"text\" : \"%s\"\n"
-                + "}", this.queue, this.text);
+                + "}", this.topic, this.text);
+    }
+
+    /**
+     * The setter for field.
+     * @param topic String.
+     */
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     /**
      * The getter for field.
-     * @return Text content.
+     * @return
      */
     public String getText() {
         return text;
@@ -83,7 +90,7 @@ public class MessageQueue implements Message {
      */
     @Override
     public String getTitle() {
-        return queue;
+        return topic;
     }
 
     /**
@@ -93,6 +100,33 @@ public class MessageQueue implements Message {
      */
     @Override
     public String getId() {
-        return "queue not need ID";
+        return id;
+    }
+
+    /**
+     * The setter for field.
+     * @param id String.
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    /**
+     * Method override to string
+     * @return String representation.
+     */
+    @Override
+    public String toString() {
+        return "pooh.MessageTopic{"
+                + "typeSequence='" + typeSequence + '\''
+                + ", topic='" + topic + '\''
+                + ", text='" + text + '\''
+                + ", id='" + id + '\''
+                + ", messageType='" + messageType + '\''
+                + '}';
     }
 }

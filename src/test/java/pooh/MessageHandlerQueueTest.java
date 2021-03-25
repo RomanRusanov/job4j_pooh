@@ -1,11 +1,14 @@
+package pooh;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * The class test behavior MessageHandlerQueue.java class.
+ * The class test behavior pooh.MessageHandlerQueue.java class.
  */
 class MessageHandlerQueueTest {
     /**
@@ -21,9 +24,9 @@ class MessageHandlerQueueTest {
      */
     private MessageHandlerQueue queue;
     /**
-     * Message instance. Create parser.
+     * pooh.Message instance. Create parser.
      */
-    private  Message message;
+    private Message message;
 
     /**
      * The method run before each test.

@@ -1,27 +1,25 @@
+package pooh;
+
 /**
  * @author Roman Rusanov
  * @version 0.1
  * @since 16.10.2020
  * email roman9628@gmail.com
- * The class .
+ * The class describe type queue of message..
  */
-public class MessageTopic implements Message {
+public class MessageQueue implements Message {
     /**
      * The field contain sequence type.
      */
-    private final String typeSequence = "topic";
+    private final String typeSequence = "queue";
     /**
-     * The field contain title of topic.
+     * The field contain title of queue.
      */
-    private String topic;
+    public String queue;
     /**
      * The field contain text.
      */
-    private String text;
-    /**
-     * The ID subscriber.
-     */
-    private String id;
+    public String text;
     /**
      * The field contain message type.
      * (Post, Get)
@@ -44,22 +42,14 @@ public class MessageTopic implements Message {
     @Override
     public String getJSON() {
         return String.format("{\n"
-                + "  \"topic\" : \"%s\",\n"
+                + "  \"queue\" : \"%s\",\n"
                 + "  \"text\" : \"%s\"\n"
-                + "}", this.topic, this.text);
-    }
-
-    /**
-     * The setter for field.
-     * @param topic String.
-     */
-    public void setTopic(String topic) {
-        this.topic = topic;
+                + "}", this.queue, this.text);
     }
 
     /**
      * The getter for field.
-     * @return
+     * @return Text content.
      */
     public String getText() {
         return text;
@@ -88,7 +78,7 @@ public class MessageTopic implements Message {
      */
     @Override
     public String getTitle() {
-        return topic;
+        return queue;
     }
 
     /**
@@ -98,33 +88,6 @@ public class MessageTopic implements Message {
      */
     @Override
     public String getId() {
-        return id;
-    }
-
-    /**
-     * The setter for field.
-     * @param id String.
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTopic() {
-        return topic;
-    }
-
-    /**
-     * Method override to string
-     * @return String representation.
-     */
-    @Override
-    public String toString() {
-        return "MessageTopic{"
-                + "typeSequence='" + typeSequence + '\''
-                + ", topic='" + topic + '\''
-                + ", text='" + text + '\''
-                + ", id='" + id + '\''
-                + ", messageType='" + messageType + '\''
-                + '}';
+        return "queue not need ID";
     }
 }

@@ -1,9 +1,11 @@
+package pooh;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * The class test behavior Server.java
+ * The class test behavior pooh.Server.java
  */
 class ServerTest {
 

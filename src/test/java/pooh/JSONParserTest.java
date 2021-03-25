@@ -1,10 +1,13 @@
+package pooh;
+
 import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * The class test behavior JSONParser.java
+ * The class test behavior pooh.JSONParser.java
  */
 class JSONParserTest {
     /**

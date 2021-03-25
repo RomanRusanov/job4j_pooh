@@ -1,16 +1,16 @@
 package pooh;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * The class test behavior pooh.MessageHandlerQueue.java class.
  */
-class MessageHandlerQueueTest {
+public class MessageHandlerQueueTest {
     /**
      * The String json.
      */
@@ -31,8 +31,8 @@ class MessageHandlerQueueTest {
     /**
      * The method run before each test.
      */
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         this.json = "{\n"
                 + "  \"queue\" : \"weather\",\n"
                 + "  \"text\" : \"temperature +18 C\",\n"
@@ -52,7 +52,7 @@ class MessageHandlerQueueTest {
      * If post success when collection contain 1 record.
      */
     @Test
-    void post() {
+    public void post() {
         assertEquals(1, queue.getSize());
     }
 
@@ -60,7 +60,7 @@ class MessageHandlerQueueTest {
      * If message exist get it in json representation.
      */
     @Test
-    void get() {
+    public void get() {
         assertEquals("{\n"
                 + "  \"queue\" : \"weather\",\n"
                 + "  \"text\" : \"temperature +18 C\"\n"

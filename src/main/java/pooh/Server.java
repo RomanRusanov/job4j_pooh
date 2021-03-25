@@ -68,7 +68,7 @@ public class Server {
     /**
      * Init ServerSocket instance.
      * @param port number port.
-     * @return pooh.Server socket.
+     * @return Server socket.
      */
     private ServerSocket initSocket(int port) {
         ServerSocket result = null;
@@ -99,7 +99,7 @@ public class Server {
     /**
      * The mwthod process connection. Receive string from client, parse json,
      * create instance message and response client.
-     * @param incoming pooh.Client socket instance.
+     * @param incoming Client socket instance.
      */
     private void processConnection(Socket incoming) {
         try (OutputStream out = incoming.getOutputStream();
@@ -145,6 +145,6 @@ public class Server {
                 e.printStackTrace();
             }
         }
-        LOG.info("pooh.Server down!");
+        LOG.info("Server down!");
     }
 }

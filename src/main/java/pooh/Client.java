@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
@@ -29,7 +30,7 @@ public class Client {
     public String sendToServer(String sendToServer) {
         StringBuilder result = new StringBuilder();
         try (Socket socket = new Socket("localhost", 9000)) {
-            Scanner scanner = new Scanner(socket.getInputStream(), "UTF-8");
+            Scanner scanner = new Scanner(socket.getInputStream(), StandardCharsets.UTF_8);
             PrintWriter writer = new PrintWriter(socket.getOutputStream());
             writer.print(sendToServer);
             LOG.info("CLIENT send: " + sendToServer);

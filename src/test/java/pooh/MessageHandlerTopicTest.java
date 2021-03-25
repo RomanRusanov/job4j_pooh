@@ -1,16 +1,16 @@
 package pooh;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * The class test behavior pooh.MessageHandlerTopic.java
  */
-class MessageHandlerTopicTest {
+public class MessageHandlerTopicTest {
     /**
      * The String json.
      */
@@ -35,8 +35,8 @@ class MessageHandlerTopicTest {
     /**
      * The method run before each test.
      */
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         this.json = "{\n"
                 + "  \"topic\" : \"weather\",\n"
                 + "  \"text\" : \"temperature +18 C\",\n"
@@ -67,7 +67,7 @@ class MessageHandlerTopicTest {
      * if id equals when pool from one queue.
      */
     @Test
-    void get() {
+    public void get() {
         MessageTopic send = null;
         try {
             this.jsonParser = new JSONParser();

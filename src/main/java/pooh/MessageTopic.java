@@ -121,7 +121,7 @@ public class MessageTopic implements Message {
      */
     @Override
     public String toString() {
-        return "pooh.MessageTopic{"
+        return "MessageTopic{"
                 + "typeSequence='" + typeSequence + '\''
                 + ", topic='" + topic + '\''
                 + ", text='" + text + '\''

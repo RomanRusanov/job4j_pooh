@@ -36,7 +36,7 @@ public class JSONParser {
      * methods for both. Noe the peek() method. It is used to find out the type
      * of the next token without actually consuming it.
      *
-     * @throws java.io.IOException
+     * @throws IOException Exception.
      */
     public Message handleJSON(String json) throws IOException {
         Message result = null;

@@ -1,15 +1,15 @@
 package pooh;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * The class test behavior pooh.JSONParser.java
  */
-class JSONParserTest {
+public class JSONParserTest {
     /**
      * The tested instance.
      */
@@ -19,7 +19,7 @@ class JSONParserTest {
      * Test.
      */
     @Test
-    void whenJSONComeQueueThenReturnObjectMessageQueueWithJSON() {
+    public void whenJSONComeQueueThenReturnObjectMessageQueueWithJSON() {
         String json = "{\n"
                 + "  \"queue\" : \"weather\",\n"
                 + "  \"text\" : \"temperature +18 C\"\n"
@@ -37,7 +37,7 @@ class JSONParserTest {
      * Test.
      */
     @Test
-    void whenJSONComeQueueThenReturnObjectMessageQueue() {
+    public void whenJSONComeQueueThenReturnObjectMessageQueue() {
         String json = "{\n"
                 + "  \"queue\" : \"weather\",\n"
                 + "  \"text\" : \"temperature +18 C\",\n"
@@ -59,7 +59,7 @@ class JSONParserTest {
      * Test.
      */
     @Test
-    void whenJSONComeTopicThenReturnObjectMessageTopic() {
+    public void whenJSONComeTopicThenReturnObjectMessageTopic() {
         String json = "{\n"
                 + "  \"topic\" : \"weather\",\n"
                 + "  \"text\" : \"temperature +18 C\",\n"
@@ -82,7 +82,7 @@ class JSONParserTest {
      * Test.
      */
     @Test
-    void whenJSONComeTopicThenReturnObjectMessageTopicWithJSON() {
+    public void whenJSONComeTopicThenReturnObjectMessageTopicWithJSON() {
         String json = "{\n"
                 + "  \"topic\" : \"weather\",\n"
                 + "  \"text\" : \"temperature +18 C\"\n"

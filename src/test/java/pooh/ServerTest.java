@@ -16,6 +16,11 @@ public class ServerTest {
      */
     @Test
     public void queueTest() {
+        Thread serverThread = new Thread(() -> {
+            Server server = new Server(50500);
+            server.acceptConnections();
+        });
+        serverThread.start();
         String jsonPost = "{"
                 + "  \"queue\" : \"weather\","
                 + "  \"text\" : \"temperature +18 C\","
@@ -26,14 +31,8 @@ public class ServerTest {
                 + "  \"queue\" : \"weather\","
                 + "  \"messageType\" : \"get\""
                 + "}";
-        Thread serverThread = new Thread(() -> {
-            Server server = new Server(50500);
-            server.acceptConnections();
-        });
-        serverThread.start();
         Client client = new Client(50500);
         assertEquals("POST/OK", client.sendToServer(jsonPost));
-        System.out.println("Queue test!==============");
         assertEquals("{"
                 + "  \"queue\" : \"weather\","
                 + "  \"text\" : \"temperature +18 C\""
@@ -75,7 +74,6 @@ public class ServerTest {
                 + "  \"messageType\" : \"get\""
                 + "}";
         Client client = new Client(50500);
-        System.out.println("Topic test------------------------");
         assertEquals("POST/OK", client.sendToServer(jsonPostWeather1));
         assertEquals("{"
                 + "  \"topic\" : \"weather\","

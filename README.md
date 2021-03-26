@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/RomanRusanov/job4j_pooh.svg?branch=main)](https://travis-ci.org/github/RomanRusanov/job4j_pooh)
 [![codecov](https://codecov.io/gh/RomanRusanov/job4j_pooh/branch/main/graph/badge.svg)](https://codecov.io/gh/RomanRusanov/job4j_pooh)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/301ec3c0c009403ba544634c72c93fe7)](https://www.codacy.com/gh/RomanRusanov/job4j_pooh/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=RomanRusanov/job4j_pooh&amp;utm_campaign=Badge_Grade)
+
 В этом проекте мы сделаем аналог асинхронной очереди RabbitMQ.
 Приложение запускает Socket и ждем клиентов.
 Клиенты могут быть двух типов: отправители (client), получатели (subscriver).
@@ -42,7 +43,9 @@ GET /topic/weather
   "topic" : "weather",
   "text" : "temperature +18 C"
 }
-Задание.
+### Задание.
 1. Создайте репозиторий job4j_pooh.
+   
 2. Напишите код согласно техническому заданию.
+   
 3. В коде не должно быть синхронизации. Все нужно сделать на Executors и conccurent коллекциях.

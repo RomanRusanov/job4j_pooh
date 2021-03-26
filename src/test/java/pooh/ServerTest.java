@@ -6,7 +6,6 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * The class test behavior Server.java
- * ServerTest1 and ServerTestTopic must run independently. On each test one server thread!!!
  */
 
 public class ServerTest {

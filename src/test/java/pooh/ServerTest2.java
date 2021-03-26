@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
  * @since 26.03.2021
  * email roman9628@gmail.com
  * ServerTest1 and ServerTest2 must run independently. On each test one server thread!!!
+ * Server instance start only one test and serve all tests.
  */
 public class ServerTest2 {
 
@@ -53,10 +54,7 @@ public class ServerTest2 {
                 + "}";
 
 
-        new Thread(() -> {
-            Server server = new Server(50500);
-            server.acceptConnections();
-        }).start();
+
 
         Client client = new Client();
         System.out.println("---------------1st Post---------------------");

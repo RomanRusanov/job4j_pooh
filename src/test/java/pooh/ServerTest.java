@@ -3,24 +3,18 @@ package pooh;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-
 /**
  * The class test behavior Server.java
  */
-
 public class ServerTest {
-
     /**
      * The test queue. If queue post, when response "POST/OK".
      * If queue get when response json with text content.
      */
     @Test
     public void queueTest() {
-        Thread serverThread = new Thread(() -> {
-            Server server = new Server(50500);
-            server.acceptConnections();
-        });
-        serverThread.start();
+        Server server = new Server(60000);
+        new Thread(server::acceptConnections).start();
         String jsonPost = "{"
                 + "  \"queue\" : \"weather\","
                 + "  \"text\" : \"temperature +18 C\","
@@ -31,7 +25,7 @@ public class ServerTest {
                 + "  \"queue\" : \"weather\","
                 + "  \"messageType\" : \"get\""
                 + "}";
-        Client client = new Client(50500);
+        Client client = new Client(60000);
         assertEquals("POST/OK", client.sendToServer(jsonPost));
         assertEquals("{"
                 + "  \"queue\" : \"weather\","
@@ -50,6 +44,8 @@ public class ServerTest {
 
     @Test
     public void topicTest() {
+        Server server = new Server(50000);
+        new Thread(server::acceptConnections).start();
         String jsonPostWeather1 = "{"
                 + "  \"topic\" : \"weather\","
                 + "  \"text\" : \"temperature +25 C\","
@@ -67,13 +63,12 @@ public class ServerTest {
                 + "  \"id\" : \"111\","
                 + "  \"messageType\" : \"get\""
                 + "}";
-
         String jsonGetSub222 = "{"
                 + "  \"topic\" : \"weather\","
                 + "  \"id\" : \"222\","
                 + "  \"messageType\" : \"get\""
                 + "}";
-        Client client = new Client(50500);
+        Client client = new Client(50000);
         assertEquals("POST/OK", client.sendToServer(jsonPostWeather1));
         assertEquals("{"
                 + "  \"topic\" : \"weather\","

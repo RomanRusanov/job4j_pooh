@@ -20,6 +20,18 @@ public class Client {
      * The instance with logger.
      */
     private static final Logger LOG = LoggerFactory.getLogger(Client.class.getName());
+    /**
+     * server port number.
+     */
+    private final int port;
+
+    /**
+     * Default constructor.
+     * @param port port number.
+     */
+    public Client(int port) {
+        this.port = port;
+    }
 
     /**
      * The method send string to server and take response from server.
@@ -29,7 +41,7 @@ public class Client {
      */
     public String sendToServer(String sendToServer) {
         StringBuilder result = new StringBuilder();
-        try (Socket socket = new Socket("127.0.0.1", 50500)) {
+        try (Socket socket = new Socket("127.0.0.1", port)) {
             Scanner scanner = new Scanner(socket.getInputStream(), StandardCharsets.UTF_8);
             PrintWriter writer = new PrintWriter(socket.getOutputStream());
             writer.print(sendToServer);

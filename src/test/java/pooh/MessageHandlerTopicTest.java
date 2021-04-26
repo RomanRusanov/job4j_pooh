@@ -12,10 +12,6 @@ import static org.junit.Assert.assertEquals;
  */
 public class MessageHandlerTopicTest {
     /**
-     * The String json.
-     */
-    private String json;
-    /**
      * The String json with other id.
      */
     private String jsonWithAnotherID;
@@ -27,17 +23,16 @@ public class MessageHandlerTopicTest {
      * The tested instance.
      */
     private MessageHandlerTopic queue;
-    /**
-     * pooh.Message instance. Create parser.
-     */
-    private  Message message;
 
     /**
      * The method run before each test.
      */
     @Before
     public void setUp() {
-        this.json = "{\n"
+        /**
+         * The String json.
+         */
+        String json = "{\n"
                 + "  \"topic\" : \"weather\",\n"
                 + "  \"text\" : \"temperature +18 C\",\n"
                 + "  \"id\" : \"123\",\n"
@@ -52,7 +47,10 @@ public class MessageHandlerTopicTest {
                 + "}";
         try {
             jsonParser = new JSONParser();
-            this.message = jsonParser.handleJSON(json);
+            /**
+             * pooh.Message instance. Create parser.
+             */
+            Message message = jsonParser.handleJSON(json);
             queue = new MessageHandlerTopic();
             queue.post(message);
         } catch (IOException e) {

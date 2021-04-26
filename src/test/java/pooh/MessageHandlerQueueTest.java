@@ -12,14 +12,6 @@ import static org.junit.Assert.assertEquals;
  */
 public class MessageHandlerQueueTest {
     /**
-     * The String json.
-     */
-    private String json;
-    /**
-     * The instance parser.
-     */
-    private JSONParser jsonParser;
-    /**
      * The tested instance.
      */
     private MessageHandlerQueue queue;
@@ -33,14 +25,20 @@ public class MessageHandlerQueueTest {
      */
     @Before
     public void setUp() {
-        this.json = "{\n"
+        /**
+         * The String json.
+         */
+        String json = "{\n"
                 + "  \"queue\" : \"weather\",\n"
                 + "  \"text\" : \"temperature +18 C\",\n"
                 + "  \"messageType\" : \"post\"\n"
                 + "}";
         try {
-            jsonParser = new JSONParser();
-            this.message = jsonParser.handleJSON(this.json);
+            /**
+             * The instance parser.
+             */
+            JSONParser jsonParser = new JSONParser();
+            this.message = jsonParser.handleJSON(json);
             queue = new MessageHandlerQueue();
             queue.post(message);
         } catch (IOException e) {

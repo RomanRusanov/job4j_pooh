@@ -16,34 +16,45 @@ Queue.
 Уникальное сообщение может быть прочитано, только одним получателем.
 
 Пример запросов.
-POST /queue
-{
-  "queue" : "weather",
-  "text" : "temperature +18 C"
-}
 
-GET /queue/weather
+POST /queue
+
+```
 {
   "queue" : "weather",
   "text" : "temperature +18 C"
 }
+```
+GET /queue/weather
+```
+{
+  "queue" : "weather",
+  "text" : "temperature +18 C"
+}
+```
 
 Topic.
 Отправить посылает сообщение с указанием темы.
 Получатель читает первое сообщение и удаляет его из очереди. 
 Если приходят несколько получателей, то они читают отдельные очереди.
+
  POST /topic
+```
 {
   "topic" : "weather",
   "text" : "temperature +18 C"
 }
+```
+
 
 GET /topic/weather
+```
 {
   "topic" : "weather",
   "text" : "temperature +18 C"
 }
-## Задание
-*   Создайте репозиторий job4j_pooh
-*   Напишите код согласно техническому заданию
-*   В коде не должно быть синхронизации все нужно сделать на Executors и concurrent коллекциях
+```
+
+##Контакты:
+*   skype: rusanov_roman
+*   telegram: @Roman_Rusanov
